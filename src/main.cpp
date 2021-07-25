@@ -3,50 +3,6 @@
 #include <filesystem>
 #include <cstdio>
 #include <queue>
-/*
-int main() 
-{
-	
-	std::queue<std::string> file_queue;
-	std::string input_dir = "C:/Users/Ethan/Desktop/repo/temp/from";
-	try
-	{
-		for (auto& dirEntry: std::filesystem::recursive_directory_iterator(input_dir))
-		{
-			std::cout << dirEntry << std::filesystem::file_status(dirEntry.path().string()).type() << std::endl;
-			file_queue.push(dirEntry.path().string());
-		}
-	}
-	catch (const std::filesystem::filesystem_error& e)
-	{
-		std::cout << e.what() << "\n";
-	}
-	std::fstream src, out;
-	std::string output_dir = "C:/Users/Ethan/Desktop/repo/temp/to";
-	while (!file_queue.empty())
-	{
-		if(file_queue.front())
-		src.open(file_queue.front());
-		std::ofstream temp_out(output_dir + file_queue.front().substr(input_dir.length(), file_queue.front().length() - 1));
-		out.open(output_dir + file_queue.front().substr(input_dir.length(), file_queue.front().length() - 1));
-
-		std::filebuf* inbuf = src.rdbuf();
-		std::filebuf* outbuf = out.rdbuf();
-
-		char c = inbuf->sbumpc();
-		while (c != EOF)
-		{
-			outbuf->sputc(c);
-			c = inbuf->sbumpc();
-		}
-
-		out.close();
-		src.close();
-
-		file_queue.pop();
-	}
-}
-*/
 bool helper(const std::filesystem::path& p, std::filesystem::file_status s)
 {
 	if (std::filesystem::is_regular_file(s))
